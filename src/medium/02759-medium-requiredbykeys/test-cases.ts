@@ -18,8 +18,6 @@ interface UserRequiredNameAndAge {
   address?: string
 }
 
-type s = RequiredByKeys<User, 'name'>
-
 type cases = [
   Expect<Equal<RequiredByKeys<User, 'name'>, UserRequiredName>>,
   Expect<Equal<RequiredByKeys<User, 'name' | 'unknown'>, UserRequiredName>>,
