@@ -1,0 +1,2 @@
+type Fibonacci<T extends number, Index extends unknown[] = [1], P extends unknown[] = [], C extends unknown[] = [1]> =
+    Index["length"] extends T ? C["length"] : Fibonacci<T, [...Index, 1], C, [...P, ...C]>;
