@@ -1,49 +1,8 @@
-import type { Equal, Expect } from '@type-challenges/utils'
-
-const tree1 = {
-  val: 1,
-  left: null,
-  right: {
-    val: 2,
-    left: {
-      val: 3,
-      left: null,
-      right: null,
-    },
-    right: null,
-  },
-} as const
-
-const tree2 = {
-  val: 1,
-  left: null,
-  right: null,
-} as const
-
-const tree3 = {
-  val: 1,
-  left: {
-    val: 2,
-    left: null,
-    right: null,
-  },
-  right: null,
-} as const
-
-const tree4 = {
-  val: 1,
-  left: null,
-  right: {
-    val: 2,
-    left: null,
-    right: null,
-  },
-} as const
+import type { Equal, Expect, NotEqual } from '@type-challenges/utils'
 
 type cases = [
-  Expect<Equal<InorderTraversal<null>, []>>,
-  Expect<Equal<InorderTraversal<typeof tree1>, [1, 3, 2]>>,
-  Expect<Equal<InorderTraversal<typeof tree2>, [1]>>,
-  Expect<Equal<InorderTraversal<typeof tree3>, [2, 1]>>,
-  Expect<Equal<InorderTraversal<typeof tree4>, [1, 2]>>,
+  Expect<Equal<{ a: 'pi' }, Flip<{ pi: 'a' }>>>,
+  Expect<NotEqual<{ b: 'pi' }, Flip<{ pi: 'a' }>>>,
+  Expect<Equal<{ 3.14: 'pi'; true: 'bool' }, Flip<{ pi: 3.14; bool: true }>>>,
+  Expect<Equal<{ val2: 'prop2'; val: 'prop' }, Flip<{ prop: 'val'; prop2: 'val2' }>>>,
 ]
